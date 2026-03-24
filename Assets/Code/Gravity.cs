@@ -41,5 +41,15 @@ public class Gravity : MonoBehaviour
 
         float distance = direction.magnitude;
 
+        if (distance < 0f) { return; }
+
+        float forceMagnitude = G * (rb.mass * otherRb.mass)/Mathf.Pow(distance, 2);
+
+        Vector3 gravityForce = forceMagnitude * direction.normalized;
+
+        otherRb.AddForce(gravityForce);
+
+
+
     }
 }
